@@ -10,9 +10,28 @@ describe Game do
   end
   context 'when a spare is scored' do
     it 'calculates the bonus correctly' do
+      @game.add(@frame_spare)
+      @game.add(@frame_regular)
+      expect(@game.calculate_total_score).to eq 20
+    end
+  end
+
+  context 'when a strike is scored' do
+    it 'calculates the bonus correctly' do
       @game.add(@frame_strike)
       @game.add(@frame_regular)
       expect(@game.calculate_total_score).to eq 24
+    end
+  end
+
+  context 'when two strikes in a row are scored' do
+    it 'calculates the bonus correctly' do
+      @game.add(@frame_strike)
+      @game.add(@frame_strike)
+      @game.add(@frame_regular)
+      @game.add(@frame_regular)
+      @game.add(@frame_regular)
+      expect(@game.calculate_total_score).to eq 61
     end
   end
 end

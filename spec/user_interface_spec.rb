@@ -16,7 +16,12 @@ RSpec.describe UserInterface do
       expect(io).to receive(:puts).with('Your current score is 10')
       expect(io).to receive(:puts).with('You are on frame 2.')
       expect(io).to receive(:puts).with('Input your roll:')
-      expect(io).to receive(:gets).and_return('0')
+      expect(io).to receive(:gets).and_return('10')
+      expect(io).to receive(:puts).with('You got a strike!')
+      expect(game).to receive(:add).with(an_instance_of(Frame))
+      expect(game).to receive(:calculate_total_score).and_return('30')
+      expect(io).to receive(:puts).with('Your current score is 30')
+      exit
       interface.run
     end
   end
