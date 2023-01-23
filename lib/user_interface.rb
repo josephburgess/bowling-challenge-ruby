@@ -15,6 +15,7 @@ class UserInterface
     until @frame_count == 10
       show "You are on frame #{@frame_count}."
       input_rolls
+      show_current_score
     end
   end
 
@@ -61,5 +62,9 @@ class UserInterface
     frame = Frame.new(roll_1, roll_2)
     @game.add(frame)
     @frame_count += 1
+  end
+
+  def show_current_score
+    show "Your current score is #{@game.calculate_total_score}"
   end
 end
