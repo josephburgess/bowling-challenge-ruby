@@ -21,4 +21,14 @@ class Frame
       false
     end
   end
+
+  def to_hash
+    {
+      roll_1: roll_1,
+      roll_2: roll_2,
+      total_score: total_score,
+      is_spare?: is_spare?,
+      is_strike?: is_strike?
+    }
+  end
 end
